@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head> 
+ <title>BB - Comprar e vender - {{titulo}}</title>
+</head>
+
+<body>
+    <header>
+        <h1>Perguntas dos Produtos</h1>
+    </header>
+
+    <main>
+                    <h4>Mande sua Mensagem:</h4>
+                    <form action="/anuncios/pergunta" >
+                        <p><label for="nome">Digite uma Etiqueta NUM</label><br></p>
+                        <p></p><input type="number" id="nome" name="number" required><br><br></p>
+
+                        <p><label for="nome">MENSAGEM</label><br></p>
+                        <input type="text" placeholder="Digite sua pergunta" required><br><br>
+                        <button type="submit">Enviar Pergunta</button>
+                    </form>
+                    
+    </main>
+</body>
+</html>

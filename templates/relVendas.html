@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BB - Comprar e vender - {{titulo}}</title>
+</head>
+
+<body>
+    <ul action="/relatorios/vendas">
+    <h1>Relatório de Vendas</h1>
+    <hr>
+
+    <script>
+        function gerar_relatorio_vendas(dados_vendas) {
+            var total_vendas = dados_vendas.reduce(function(total, venda) {
+                return total + venda['valor'];
+            }, 0);
+
+            var num_vendas = dados_vendas.length;
+            var valor_medio_venda = total_vendas / num_vendas;
+
+            var venda_mais_alta = dados_vendas.reduce(function(max_venda, venda) {
+                return (max_venda['valor'] > venda['valor']) ? max_venda : venda;
+            });
+
+            var venda_mais_baixa = dados_vendas.reduce(function(min_venda, venda) {
+                return (min_venda['valor'] < venda['valor']) ? min_venda : venda;
+            });
+
+            document.write("<p>Total de vendas: R$" + total_vendas.toFixed(2) + "</p>");
+            document.write("<p>Número de vendas: " + num_vendas + "</p>");
+            document.write("<p>Valor médio de venda: R$" + valor_medio_venda.toFixed(2) + "</p>");
+            document.write("<p>Venda mais alta: " + venda_mais_alta['produto'] + " - Valor: R$" + venda_mais_alta['valor'].toFixed(2) + "</p>");
+            document.write("<p>Venda mais baixa: " + venda_mais_baixa['produto'] + " - Valor: R$" + venda_mais_baixa['valor'].toFixed(2) + "</p>");
+        }
+        var dados_vendas = [
+            {"produto": "Camiseta", "quantidade": 2, "valor": 39.90},
+            {"produto": "Calça Jeans", "quantidade": 1, "valor": 79.90},
+            {"produto": "Tênis", "quantidade": 1, "valor": 129.90},
+        ];   
+    
+        gerar_relatorio_vendas(dados_vendas);
+    </script>
+    </ul>
+</body>
+</html>
+

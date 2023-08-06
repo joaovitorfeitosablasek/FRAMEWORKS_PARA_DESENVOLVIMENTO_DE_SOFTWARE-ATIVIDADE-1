@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BB - Comprar e vender - {{titulo}}</title>
+</head>
+<body>
+<ul action="/relatorios/compras">
+  <div id="relatorio"></div>
+
+  <script>
+    function gerar_relatorio_compras(dados_compras) {
+      var total_compras = dados_compras.reduce(function (acc, compra) {
+        return acc + compra.valor;
+      }, 0);
+
+      var num_compras = dados_compras.length;
+      var valor_medio_compra = total_compras / num_compras;
+      var compra_mais_cara = dados_compras.reduce(function (prev, current) {
+        return prev.valor > current.valor ? prev : current;
+      });
+      var compra_mais_barata = dados_compras.reduce(function (prev, current) {
+        return prev.valor < current.valor ? prev : current;
+      });
+
+      var relatorio = `
+        <h1>Relatório de Compras:</h1>
+        <p>Total de compras: R$${total_compras.toFixed(2)}</p>
+        <p>Número de compras: ${num_compras}</p>
+        <p>Valor médio de compra: R$${valor_medio_compra.toFixed(2)}</p>
+        <p>Compra mais cara: ${compra_mais_cara.produto} - Valor: R$${compra_mais_cara.valor.toFixed(2)}</p>
+        <p>Compra mais barata: ${compra_mais_barata.produto} - Valor: R$${compra_mais_barata.valor.toFixed(2)}</p>
+      `;
+
+      document.getElementById('relatorio').innerHTML = relatorio;
+    }
+
+    var dados_compras = [
+      { produto: 'Item 1', valor: 50 },
+      { produto: 'Item 2', valor: 30 },
+      { produto: 'Item 3', valor: 70 },
+      { produto: 'Item 4', valor: 25 },
+    ];
+
+    gerar_relatorio_compras(dados_compras);
+  </script>
+</body>
+</html>

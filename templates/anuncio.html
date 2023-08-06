@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head> 
+    <title>BB - Comprar e vender - {{titulo}}</title>
+</head>
+
+<body>
+    <h1>Cadastro de Novo Produto</h1>
+    <form action="/cad/anuncio" method="post">
+        <label for="nome">Nome do Produto:</label><br>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="preco">Preço:</label><br>
+        <input type="number" id="preco" name="preco" step="0.01" required><br><br>
+
+        <label for="descricao">Descrição:</label><br>
+        <textarea id="descricao" name="descricao" rows="4" cols="50" required></textarea><br><br>
+        
+        <label for="descricao">Categoria:</label><br>
+        <select class="form-select" multiple aria-label="Multiple select example" required><br><br>
+            <option selected>Camisetas</option required><br><br>
+            <option value="1">Calças</option required><br><br>
+            <option value="2">Tênis</option required><br><br>
+            <option value="3">Periféricos</option required><br><br>
+            <option value="3">Mesas</option required><br><br>
+            <option value="3">Domésticos</option required><br><br>
+          </select>
+
+          <p><label for="nome">Digite uma Etiqueta NUM</label><br></p>
+          <p></p><input type="number" id="nome" name="number" required><br><br></p>
+
+        <input type="submit" value="Cadastrar Produto">
+    </form>
+</body>
+</html>
